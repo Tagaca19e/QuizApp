@@ -166,18 +166,17 @@ router.get("/count", (req, res) => {
  * }
 
  */
-function findID(id) {
-  return id === req.params.qId;
-}
 
 router.get("/:qId", (req, res) => {
   let something = req.params.qId;
 
-  let index = removeKey().findIndex((element) => element.id === something);
-  console.log(index);
-  console.log(Questions[index]);
-  res.send(Questions[index]);
-  // res.send(index);
+  for (let i = 0; i < removeKey().length; i++) {
+    if (removeKey()[i] == something) {
+      console.log(removeKey()[index]);
+    }
+  }
+
+  // res.send(removeKey()[index]);
 });
 
 /**

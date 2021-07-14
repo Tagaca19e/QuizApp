@@ -173,11 +173,9 @@ function findID(id) {
 router.get("/:qId", (req, res) => {
   let something = req.params.qId;
 
-  let index = removeKey().findIndex((element) => element.id === something);
+  let index = removeKey().findIndex((element) => element.id === questionone);
   console.log(index);
-  console.log(Questions[index]);
-  res.send(Questions[index]);
-  // res.send(index);
+  res.send(index);
 });
 
 /**

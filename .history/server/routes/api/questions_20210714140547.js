@@ -176,7 +176,6 @@ router.get("/:qId", (req, res) => {
   let index = removeKey().findIndex((element) => element.id === something);
   console.log(index);
   console.log(Questions[index]);
-  res.send(Questions[index]);
   // res.send(index);
 });
 
