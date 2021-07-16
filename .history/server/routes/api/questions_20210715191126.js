@@ -36,7 +36,10 @@ function removeKey() {
 }
 
 router.get("/", (req, res) => {
+  // console.log(result);
   res.json(removeKey());
+
+  // res.send(removeKey());
 });
 
 /**

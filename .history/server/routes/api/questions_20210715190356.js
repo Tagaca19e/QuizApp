@@ -24,19 +24,66 @@ const express = require("express");
 
 const router = express.Router();
 
+// Question Data
+
 const Questions = require("../../models/questions-data.json");
 
 // Hint: get a bonus task here
 
 const shuffleArray = require("../../utils/shuffle");
 
+/**
+
+ * Route details
+
+ * api GET /api/questions
+
+ * Description: Get all questions in the database
+
+ * IMPORTANT: remove the answers from it's data
+
+ * we don't want the client to know the answer.
+
+ *
+
+ * Structure of the return JSON:
+
+ * [
+
+ *    {
+
+ *      question: 'sample question',
+
+ *      options: [
+
+ *        'option1',
+
+ *        'option2'
+
+ *      ],
+
+ *      id: '1234'
+
+ *    }
+
+ * ]
+
+ *
+
+ */
+
 function removeKey() {
   const result = Questions.map(({ answer, ...obj }) => obj);
+  // var result = Questions.filter(function (Question));
+
   return result;
 }
 
 router.get("/", (req, res) => {
+  // console.log(result);
   res.json(removeKey());
+
+  // res.send(removeKey());
 });
 
 /**
@@ -109,18 +156,15 @@ function findID(id) {
 }
 
 router.get("/:qId", (req, res) => {
-  let something = req.params.qId;
+  // let something = req.params.qId;
 
-  let index = removeKey().findIndex((element) => element.id === something);
-  console.log(index);
-  console.log(removeKey()[index]);
-
-  res.send(removeKey()[index]);
-
-  // for (const Question of Questions) {
-  //   if (Question.id == req.params.qId) {
-  //   }
-  // }
+  // let index = removeKey().findIndex((element) => element.id === something);
+  // console.log(index);
+  // res.send(removeKey()[index]);
+  for (const Question of Questions) {
+    if (Question.id == req.params.qId) {
+    }
+  }
 
   // res.send(Questions[index]);
   // res.send(index);
