@@ -32,12 +32,10 @@ const shuffleArray = require("../../utils/shuffle");
 
 function removeKey() {
   const result = Questions.map(({ answer, ...obj }) => obj);
-
   return result;
 }
 
 router.get("/", (req, res) => {
-  // console.log(Questions);
   res.json(removeKey());
 });
 
@@ -113,8 +111,8 @@ function findID(id) {
 
 router.get("/:qId", (req, res) => {
   let index = removeKey().findIndex((element) => element.id === req.params.qId);
-  // console.log(index);
-  // console.log(removeKey()[index]);
+  console.log(index);
+  console.log(removeKey()[index]);
 
   res.json({
     question: removeKey()[index].question,
@@ -165,37 +163,12 @@ router.get("/:qId", (req, res) => {
 
  */
 
-// function checker() {
-//   if req.body[removeKey().id] =
-// };
-
-let userAnswer = "";
-let numCorrect = 0;
-
-function checker() {
-  let passed = "passed";
-  let failed = "failed";
-  if (numCorrect <= 2) {
-    return passed;
-  } else return failed;
-}
 router.post("/result", (req, res) => {
-  // compared key answer which is from Questions data to the users answers using req.body
-
-  for (var i = 0; i < Questions.length; i++) {
-    userAnswer = req.body[i + 1];
-    let keyAnswer = Questions[i].answer;
-
-    if (userAnswer === keyAnswer) {
-      numCorrect++;
-    }
-  }
-
+  // res.send(req.body);
   res.json({
-    // needs a function to check whether the use passed or failed
-    summary: checker(),
+    summary: "passed OR failed",
 
-    score: numCorrect,
+    score: "how many answers were correct",
 
     total: countNum(),
   });

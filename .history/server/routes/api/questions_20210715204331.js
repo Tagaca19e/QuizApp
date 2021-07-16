@@ -37,7 +37,7 @@ function removeKey() {
 }
 
 router.get("/", (req, res) => {
-  // console.log(Questions);
+  console.log(Questions);
   res.json(removeKey());
 });
 
@@ -113,8 +113,8 @@ function findID(id) {
 
 router.get("/:qId", (req, res) => {
   let index = removeKey().findIndex((element) => element.id === req.params.qId);
-  // console.log(index);
-  // console.log(removeKey()[index]);
+  console.log(index);
+  console.log(removeKey()[index]);
 
   res.json({
     question: removeKey()[index].question,
@@ -169,31 +169,26 @@ router.get("/:qId", (req, res) => {
 //   if req.body[removeKey().id] =
 // };
 
-let userAnswer = "";
-let numCorrect = 0;
-
-function checker() {
-  let passed = "passed";
-  let failed = "failed";
-  if (numCorrect <= 2) {
-    return passed;
-  } else return failed;
-}
 router.post("/result", (req, res) => {
-  // compared key answer which is from Questions data to the users answers using req.body
+  // console.log(req.body[1]);
+  // console.log(checker);
+  // the answers were also removed from the questions js
 
-  for (var i = 0; i < Questions.length; i++) {
-    userAnswer = req.body[i + 1];
-    let keyAnswer = Questions[i].answer;
+  let userAnswer = "";
+  let numCorrect = 0;
 
-    if (userAnswer === keyAnswer) {
+  for (let i = 0; i < Questions.length; i++) {
+    userAnswer = req.body[i];
+    // console.log(req.body[i]);
+    console.log(Questions);
+    if (userAnswer === Questions[i].answer) {
       numCorrect++;
     }
   }
 
   res.json({
     // needs a function to check whether the use passed or failed
-    summary: checker(),
+    summary: "passed OR failed",
 
     score: numCorrect,
 

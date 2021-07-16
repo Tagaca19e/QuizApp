@@ -193,7 +193,7 @@ router.post("/result", (req, res) => {
 
   res.json({
     // needs a function to check whether the use passed or failed
-    summary: checker(),
+    summary: "passed OR failed",
 
     score: numCorrect,
 

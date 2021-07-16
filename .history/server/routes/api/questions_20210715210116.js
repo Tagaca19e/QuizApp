@@ -172,12 +172,14 @@ router.get("/:qId", (req, res) => {
 let userAnswer = "";
 let numCorrect = 0;
 
-function checker() {
+function() {
   let passed = "passed";
   let failed = "failed";
   if (numCorrect <= 2) {
     return passed;
-  } else return failed;
+  } else
+    return failed;
+ 
 }
 router.post("/result", (req, res) => {
   // compared key answer which is from Questions data to the users answers using req.body
@@ -193,7 +195,7 @@ router.post("/result", (req, res) => {
 
   res.json({
     // needs a function to check whether the use passed or failed
-    summary: checker(),
+    summary: "passed OR failed",
 
     score: numCorrect,
 
