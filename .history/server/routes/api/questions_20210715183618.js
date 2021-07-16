@@ -73,14 +73,16 @@ const shuffleArray = require("../../utils/shuffle");
  */
 
 function removeKey() {
-  const result = Questions.map(({ answer, ...obj }) => obj);
-  // var result = Questions.filter(function (Question));
+  // const result = Questions.map(({ answer, ...obj }) => obj);
+  var result = Questions.filter(function (Question));
+    
+  
 
   return result;
 }
 
 router.get("/", (req, res) => {
-  // console.log(result);
+  console.log(result);
   res.send(removeKey());
 
   // res.send(removeKey());
@@ -109,7 +111,6 @@ router.get("/", (req, res) => {
 function countNum() {
   var length = 0;
   for (var key in removeKey()) {
-    
     if (Questions.hasOwnProperty(key)) {
       ++length;
     }
@@ -120,7 +121,6 @@ function countNum() {
 router.get("/count", (req, res) => {
   // Remove the lines below and write your implementation
   // const count =  _.size(Questions);
-
 
   res.send(countNum() + "");
   console.log(countNum() + "");
@@ -158,16 +158,11 @@ function findID(id) {
 }
 
 router.get("/:qId", (req, res) => {
-  // let something = req.params.qId;
+  let something = req.params.qId;
 
-  // let index = removeKey().findIndex((element) => element.id === something);
-  // console.log(index);
-  // res.send(removeKey()[index]);
-  for (const q of Questions) {
-    if
-  }
-
-
+  let index = removeKey().findIndex((element) => element.id === something);
+  console.log(index);
+  res.send(removeKey()[index]);
   // res.send(Questions[index]);
   // res.send(index);
 });

@@ -109,7 +109,6 @@ router.get("/", (req, res) => {
 function countNum() {
   var length = 0;
   for (var key in removeKey()) {
-    
     if (Questions.hasOwnProperty(key)) {
       ++length;
     }
@@ -120,7 +119,7 @@ function countNum() {
 router.get("/count", (req, res) => {
   // Remove the lines below and write your implementation
   // const count =  _.size(Questions);
-
+  
 
   res.send(countNum() + "");
   console.log(countNum() + "");
