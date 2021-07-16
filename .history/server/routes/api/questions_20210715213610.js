@@ -169,9 +169,12 @@ router.get("/:qId", (req, res) => {
 //   if req.body[removeKey().id] =
 // };
 
+let userAnswer = "";
+let numCorrect = 0;
+
 // numCorrect needs to be set to 0 when the window is refreshed
 
-function checker(numCorrect) {
+function checker() {
   let passed = "passed";
   let failed = "failed";
   if (numCorrect <= 2) {
@@ -182,8 +185,6 @@ function checker(numCorrect) {
 router.post("/result", (req, res) => {
   // compared key answer which is from Questions data to the users answers using req.body
 
-  let userAnswer = "";
-  let numCorrect = 0;
   for (var i = 0; i < Questions.length; i++) {
     userAnswer = req.body[i + 1];
     let keyAnswer = Questions[i].answer;
@@ -195,7 +196,7 @@ router.post("/result", (req, res) => {
 
   res.json({
     // needs a function to check whether the use passed or failed
-    summary: checker(numCorrect),
+    summary: checker(),
 
     score: numCorrect,
 
