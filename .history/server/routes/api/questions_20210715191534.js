@@ -69,13 +69,16 @@ function countNum() {
   return length;
 }
 
-router.get("/count", (req, res) => {
-  // removeKey is the function that is being called for the copy of the Questions data
-  //this returns 4 but is not currently showin on the client side
+var Qs = Object.keys({ ...Questions });
 
-  res.json({
-    count: countNum(),
-  });
+router.get("/count", (req, res) => {
+  // Remove the lines below and write your implementation
+  // const count =  _.size(Questions);
+
+  // res.send(countNum() + "");
+  // console.log(countNum() + "");
+  console.log(Qs);
+  res.json(Qs);
 });
 
 /**
@@ -110,15 +113,21 @@ function findID(id) {
 }
 
 router.get("/:qId", (req, res) => {
-  let index = removeKey().findIndex((element) => element.id === req.params.qId);
+  let something = req.params.qId;
+
+  let index = removeKey().findIndex((element) => element.id === something);
   console.log(index);
   console.log(removeKey()[index]);
 
-  res.json({
-    question: removeKey()[index].question,
-    options: removeKey()[index].options,
-    id: removeKey()[index].id,
-  });
+  res.send(removeKey()[index]);
+
+  // for (const Question of Questions) {
+  //   if (Question.id == req.params.qId) {
+  //   }
+  // }
+
+  // res.send(Questions[index]);
+  // res.send(index);
 });
 
 /**
@@ -164,7 +173,15 @@ router.get("/:qId", (req, res) => {
  */
 
 router.post("/result", (req, res) => {
-  res.send(req.body);
+  let userAnswer = removeKey().options;
+  let checker = false;
+  if (userAnswer === Questions.answer) {
+    return checker(true);
+  }
+
+  res.status(500).send({
+    error: "not implemented",
+  });
 });
 
 module.exports = router;

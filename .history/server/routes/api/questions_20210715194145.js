@@ -68,10 +68,21 @@ function countNum() {
   }
   return length;
 }
-
+/**
+ * Route details
+ * api GET /api/questions/count
+ * Description: This will get the count of the questions
+ * from the database and return it
+ * Structure of the return JSON:
+ * {
+ *  count: 4
+ * }
+ */
 router.get("/count", (req, res) => {
   // removeKey is the function that is being called for the copy of the Questions data
   //this returns 4 but is not currently showin on the client side
+  console.log(Object.keys(removeKey()).length);
+  console.log(removeKey().length);
 
   res.json({
     count: countNum(),
@@ -110,15 +121,13 @@ function findID(id) {
 }
 
 router.get("/:qId", (req, res) => {
-  let index = removeKey().findIndex((element) => element.id === req.params.qId);
+  let something = req.params.qId;
+
+  let index = removeKey().findIndex((element) => element.id === something);
   console.log(index);
   console.log(removeKey()[index]);
 
-  res.json({
-    question: removeKey()[index].question,
-    options: removeKey()[index].options,
-    id: removeKey()[index].id,
-  });
+  res.json(removeKey()[index]);
 });
 
 /**
@@ -164,7 +173,15 @@ router.get("/:qId", (req, res) => {
  */
 
 router.post("/result", (req, res) => {
-  res.send(req.body);
+  let userAnswer = removeKey().options;
+  let checker = false;
+  if (userAnswer === Questions.answer) {
+    return checker(true);
+  }
+
+  res.status(500).send({
+    error: "not implemented",
+  });
 });
 
 module.exports = router;

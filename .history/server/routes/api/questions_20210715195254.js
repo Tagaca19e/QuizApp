@@ -164,7 +164,10 @@ router.get("/:qId", (req, res) => {
  */
 
 router.post("/result", (req, res) => {
-  res.send(req.body);
+  res.send({
+    req.body
+  
+  });
 });
 
 module.exports = router;

@@ -164,7 +164,9 @@ router.get("/:qId", (req, res) => {
  */
 
 router.post("/result", (req, res) => {
-  res.send(req.body);
+  res.status(500).send({
+    error: "not implemented",
+  });
 });
 
 module.exports = router;
