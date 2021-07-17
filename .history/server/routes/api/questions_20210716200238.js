@@ -38,8 +38,9 @@ function removeKey() {
 
 router.get("/", (req, res) => {
   // console.log(Questions);
+  console.log(shuffleArray(removeKey()));
   res.json(shuffleArray(removeKey()));
-  // res.json(removeKey());
+  // shuffleArray(removeKey());
 });
 
 /**

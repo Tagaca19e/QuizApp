@@ -11,10 +11,6 @@
  * @param {Array} array original array
  * @returns {Array} shuffled array
  */
-
-//This function also works as well
-// ------------------------------------------------
-
 // function shuffleArray(array) {
 //   const arr = array.slice(0);
 //   var currentIndex = arr.length,
@@ -32,10 +28,11 @@
 // }
 function shuffleArray(array) {
   const arr = array.slice(0);
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    // const temp = array[i];
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
   }
 
   return arr;
