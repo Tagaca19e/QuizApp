@@ -174,7 +174,7 @@ router.get("/:qId", (req, res) => {
 function checker(numCorrect) {
   let passed = "passed";
   let failed = "failed";
-  if (numCorrect >= 2) {
+  if (numCorrect <= 2) {
     return passed;
   } else return failed;
 }
