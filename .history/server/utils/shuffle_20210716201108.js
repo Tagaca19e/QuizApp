@@ -11,19 +11,20 @@
  * @param {Array} array original array
  * @returns {Array} shuffled array
  */
-
 function shuffleArray(array) {
-  const arr = array.slice(0)
-  // Implementation goes here
-  for(let i= 0; i<arr.length; i++){
-    let first = Math.floor(Math.random()*arr.length);
-    let second = Math.floor(Math.random()*arr.length);
-    var b=arr[first];
-    arr[first]= arr[second];
-    arr[second]= b;
+  const arr = array.slice(0);
+  var currentIndex = arr.length,
+    temporaryValue,
+    randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    arr[currentIndex] = arr[randomIndex];
+    arr[randomIndex] = temporaryValue;
   }
-  return arr
 
+  return arr;
 }
 
 module.exports = shuffleArray;
