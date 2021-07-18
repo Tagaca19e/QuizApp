@@ -32,13 +32,12 @@ const shuffleArray = require("../../utils/shuffle");
 
 function removeKey() {
   const result = Questions.map(({ answer, ...obj }) => obj);
-
   return result;
 }
 
 router.get("/", (req, res) => {
-  // console.log(Questions);
-  res.json(removeKey());
+  var arr = removeKey()
+  res.json(shuffleArray(arr));
 });
 
 /**
@@ -181,6 +180,7 @@ function checker(numCorrect) {
 
 router.post("/result", (req, res) => {
   // compared key answer which is from Questions data to the users answers using req.body
+  
 
   let userAnswer = "";
   let numCorrect = 0;
